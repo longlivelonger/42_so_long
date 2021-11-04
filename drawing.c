@@ -6,7 +6,7 @@
 /*   By: sbronwyn <sbronwyn@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 18:54:35 by sbronwyn          #+#    #+#             */
-/*   Updated: 2021/11/04 15:53:49 by sbronwyn         ###   ########.fr       */
+/*   Updated: 2021/11/04 17:11:14 by sbronwyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,34 @@ static int	moves_count(int add)
 	return (count);
 }
 
+static void	draw_counter(void *mlx_ptr, void *mlx_win, int num)
+{
+	int		y;
+	int		x;
+	char	*num_str;
+	char	*final_str;
+
+	num_str = ft_itoa(num);
+	if (num_str == 0)
+		return ;
+	final_str = ft_strjoin("Moves: ", num_str);
+	if (final_str == 0)
+	{
+		free(num_str);
+		return ;
+	}
+	y = -1;
+	while (++y < 20)
+	{
+		x = -1;
+		while (++x < 85)
+			mlx_pixel_put(mlx_ptr, mlx_win, x, y, 5999942);
+	}
+	mlx_string_put(mlx_ptr, mlx_win, 10, 15, 0, final_str);
+	free(num_str);
+	free(final_str);
+}
+
 void	draw_window(void *mlx_ptr, void *mlx_win, t_assets *assets, t_map *map)
 {
 	static void	*mlx_ptr_local = 0;
@@ -51,8 +79,6 @@ void	draw_window(void *mlx_ptr, void *mlx_win, t_assets *assets, t_map *map)
 	if (mlx_win != 0)
 		mlx_win_local = mlx_win;
 	mlx_clear_window(mlx_ptr_local, mlx_win_local);
-	moves_count(1);
-	mlx_string_put(mlx_ptr, mlx_win, 10, 10, 0, "Test");
 	i = -1;
 	while (map->str[++i] != '\0')
 	{
@@ -64,4 +90,5 @@ void	draw_window(void *mlx_ptr, void *mlx_win, t_assets *assets, t_map *map)
 			mlx_put_image_to_window(mlx_ptr_local, mlx_win_local, image,
 				32 * (i % (map->width + 1)), 32 * (i / (map->width + 1)));
 	}
+	draw_counter(mlx_ptr_local, mlx_win_local, moves_count(1));
 }

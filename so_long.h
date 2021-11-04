@@ -6,7 +6,7 @@
 /*   By: sbronwyn <sbronwyn@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 15:49:14 by sbronwyn          #+#    #+#             */
-/*   Updated: 2021/10/26 13:53:30 by sbronwyn         ###   ########.fr       */
+/*   Updated: 2021/11/04 16:26:58 by sbronwyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "mlx.h"
+# include "libft.h"
 
 typedef struct s_assets
 {
