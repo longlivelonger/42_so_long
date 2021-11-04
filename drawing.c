@@ -6,7 +6,7 @@
 /*   By: sbronwyn <sbronwyn@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 18:54:35 by sbronwyn          #+#    #+#             */
-/*   Updated: 2021/10/25 19:11:27 by sbronwyn         ###   ########.fr       */
+/*   Updated: 2021/11/04 15:53:49 by sbronwyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ static int	moves_count(int add)
 	static int	count = -1;
 
 	count += add;
-	if (count > 0)
-		printf("Moves: %d\n", count);
 	return (count);
 }
 
@@ -54,6 +52,7 @@ void	draw_window(void *mlx_ptr, void *mlx_win, t_assets *assets, t_map *map)
 		mlx_win_local = mlx_win;
 	mlx_clear_window(mlx_ptr_local, mlx_win_local);
 	moves_count(1);
+	mlx_string_put(mlx_ptr, mlx_win, 10, 10, 0, "Test");
 	i = -1;
 	while (map->str[++i] != '\0')
 	{
